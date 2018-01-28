@@ -1,0 +1,9 @@
+{
+  "name": "practic-one",
+  "version": "0.0.0",
+  "description": "PracticOne",
+  "main": "app.js",
+  "author": {
+    "name": "administrator"
+  }
+}

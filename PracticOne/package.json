@@ -1,9 +1,20 @@
 {
-  "name": "practic-one",
-  "version": "0.0.0",
+  "name": "jalili",
+  "version": "0.0.1",
   "description": "PracticOne",
   "main": "app.js",
-  "author": {
-    "name": "administrator"
-  }
+  "author": "administrator",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jalilideveloper/jalilinpm.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jalilideveloper/jalilinpm/issues"
+  },
+  "homepage": "https://github.com/jalilideveloper/jalilinpm#readme",
+  "dependencies": {"ansi": "0.3.1"}
 }

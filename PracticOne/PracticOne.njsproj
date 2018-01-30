@@ -11,7 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>3ed5b940-1a40-4393-8a38-ac0f679a7c18</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>app.js</StartupFile>
+    <StartupFile>Progress.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -28,9 +28,32 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="anreg.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ansireg.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app.js" />
+    <Compile Include="index.js" />
+    <Compile Include="newlines.js" />
+    <Compile Include="Progress.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="table.js" />
+    <Content Include="bin\Microsoft.NodejsTools.WebRole.dll" />
+    <Content Include="npm-debug.log" />
+    <Content Include="obj\Debug\CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\PracticOne.njsproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\PracticOne.njsprojResolveAssemblyReference.cache" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
+    <Folder Include="node_modules\" />
+    <Folder Include="obj\" />
+    <Folder Include="obj\Debug\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

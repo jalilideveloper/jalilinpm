@@ -1,0 +1,2 @@
+D:\ProjectAM\jalilinpm\PracticOne\obj\Debug\PracticOne.njsprojResolveAssemblyReference.cache
+D:\ProjectAM\jalilinpm\PracticOne\bin\Microsoft.NodejsTools.WebRole.dll

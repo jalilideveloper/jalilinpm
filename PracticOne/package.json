@@ -1,9 +1,14 @@
 {
   "name": "jalili",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "PracticOne",
   "main": "app.js",
   "author": "administrator",
+  "keywords": [
+    "jalili",
+    "table",
+    "elearnpad"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +21,5 @@
     "url": "https://github.com/jalilideveloper/jalilinpm/issues"
   },
   "homepage": "https://github.com/jalilideveloper/jalilinpm#readme",
-  "dependencies": {"ansi": "0.3.1"}
+  "dependencies": {}
 }

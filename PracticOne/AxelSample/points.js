@@ -1,6 +1,6 @@
 
   // Uses AXEL's node module
-  var ctx = require('../index.js');
+var ctx = require('../Axel');
   
   // Clear the terminal
   ctx.clear();

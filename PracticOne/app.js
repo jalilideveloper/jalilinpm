@@ -1,178 +1,192 @@
 'use strict';
 
-//Read();
+Read();
 
 function Read() {
 
+    var ansi = require('./ansireg')
+        , cursor = ansi(process.stdout)
+
+    // You can chain your calls forever: 
+    cursor
+        .white()                 // Set font color to red 
+        .bg.grey()             // Set background color to grey // Write 'Hello World!' to stdout 
+        .bg.reset()            // Reset the bgcolor before writing the trailing \n, 
+        //      to avoid Terminal glitches 
+        .write('\n')           // And a final \n to wrap things up 
+    console.log("\n")
+    console.log("Please Choose Number : \n")
+    console.log("1. Enter yourName with screen x,y position. ==> 1,Alex,500,100 \n")
+    console.log("2. Enter yorname with your favorite color.  ==> 2,Alex,Red \n")
+    console.log("3. Enter yourname with your backcolor.      ==> 3,Alex,Red \n")
+    console.log("4. Shape: [Box-Circle-Brush-Brushcolor]     ==> 4,Box .\n")
+    console.log("5. Load progress bar.                       ==> 5,ver Or 5,hor \n")
+    console.log("6. Load data in table view.                 ==> 6 \n")
+
+
+    var stdin = process.openStdin();
+    stdin.addListener("data", function (d) {
+        var q = d.toString().trim();
+
+
+        var arr = q.split(',')
+        console.log("You entered : " + arr[0] + "\n");
+
+        if (arr[0] == "1") {
+            var x = d.toString();
+            PrintOnXY(arr[2], arr[3], arr[1]);
+            Read();
+        }
+        else if (arr[0] == "2") {
+
+            var ansi = require('./ansireg')
+                , cursor = ansi(process.stdout);
+            var color = arr[2];
+            switch (color) {
+
+                case "white":
+                    cursor
+                        .white()                 // Set font color to red 
+                        .bg.grey()             // Set background color to grey // Write 'Hello World!' to stdout 
+                        .bg.reset()            // Reset the bgcolor before writing the trailing \n, 
+                        //      to avoid Terminal glitches 
+                        .write('\n')           // And a final \n to wrap things up 
+                    console.log('This is blood ' + arr[1] + ', bold text')
+
+                    cursor.fg.reset()
+                    Read();
+                    break;
+                case "blue":
+                    cursor
+                        .blue()                 // Set font color to red 
+                        .bg.grey()             // Set background color to grey // Write 'Hello World!' to stdout 
+                        .bg.reset()            // Reset the bgcolor before writing the trailing \n, 
+                        //      to avoid Terminal glitches 
+                        .write('\n')           // And a final \n to wrap things up 
+                    console.log('This is blood ' + arr[1] + ', bold text')
+
+                    cursor.fg.reset()
+                    Read();
+                    break;
+                case "green":
+                    cursor
+                        .green()                 // Set font color to red 
+                        .bg.grey()             // Set background color to grey // Write 'Hello World!' to stdout 
+                        .bg.reset()            // Reset the bgcolor before writing the trailing \n, 
+                        //      to avoid Terminal glitches 
+                        .write('\n')           // And a final \n to wrap things up 
+                    console.log('This is blood ' + arr[1] + ', bold text')
+
+                    cursor.fg.reset()
+                    Read();
+                    break;
+                case "yellow":
+                    cursor
+                        .yellow()                 // Set font color to red 
+                        .bg.grey()             // Set background color to grey // Write 'Hello World!' to stdout 
+                        .bg.reset()            // Reset the bgcolor before writing the trailing \n, 
+                        //      to avoid Terminal glitches 
+                        .write('\n')           // And a final \n to wrap things up 
+                    console.log('This is blood ' + arr[1] + ', bold text')
+
+                    cursor.fg.reset()
+                    Read();
+                    break;
+                case "cyan":
+                    cursor
+                        .cyan()                 // Set font color to red 
+                        .bg.grey()             // Set background color to grey // Write 'Hello World!' to stdout 
+                        .bg.reset()            // Reset the bgcolor before writing the trailing \n, 
+                        //      to avoid Terminal glitches 
+                        .write('\n')           // And a final \n to wrap things up 
+                    console.log('This is blood ' + arr[1] + ', bold text')
+
+                    cursor.fg.reset()
+                    Read();
+                    break;
+
+            }
+        }
+        else if (arr[0] == "3") {
+            var ansi = require('./ansireg')
+                , cursor = ansi(process.stdout);
+
+            var color = arr[2];
+            switch (color) {
+                case "red":
+                    cursor.red().bold().underline().write("Wellcome : " + arr[1])
+                    break;
+                case "green":
+                    cursor.green().bold().underline().write("Wellcome : " + arr[1])
+                    break;
+                case "yellow":
+                    cursor.yellow().bold().underline().write("Wellcome : " + arr[1])
+                    break;
+                case "white":
+                    cursor.white().bold().underline().write("Wellcome : " + arr[1])
+                    break;
+                case "blue":
+                    cursor.blue().bold().underline().write("Wellcome : " + arr[1])
+                    break;
+
+            }
+
+            Read();
+
+        }
+
+        else if (arr[0] == "4") {
+            if (arr[1] == "Box") {
+                Box();
+            } else if (arr[1] == "Circle") {
+                Circle();
+            } else if (arr[1] == "Brush") {
+                Brush();
+            } else if (arr[1] == "Brushcolor") {
+                Brushcolor();
+            }
+            Read();
+        }
+
+        else if (arr[0] == "5") {
+
+            if (arr[1] == "ver") {
+                ProgressBar();
+            } else {
+                // horizantal progress
+            }
+
+        }
+
+
+        else if (arr[0] == "6") {
+            PrintTable();
+            Read();
+        }
+
+
+
+
+
+    });
 }
 
 
-var ansi = require('./ansireg')
-    , cursor = ansi(process.stdout)
-
-// You can chain your calls forever: 
-cursor
-    .white()                 // Set font color to red 
-    .bg.grey()             // Set background color to grey // Write 'Hello World!' to stdout 
-    .bg.reset()            // Reset the bgcolor before writing the trailing \n, 
-    //      to avoid Terminal glitches 
-    .write('\n')           // And a final \n to wrap things up 
-console.log("\n")
-console.log("Please Choose Number For Action : \n")
-console.log("1. Print Your Input on  X and Y point. \n")
-console.log("2. Print Your Text with color font.\n")
-console.log("3. Print Your Text with backcolor font.\n")
-console.log("4. You can choose circle or box or brush or brush-color.\n")
-console.log("5. Load progress bar form 0 to 100 vertical or horizantal.n")
 
 
-var stdin = process.openStdin();
-
-stdin.addListener("data", function (d) {
-    var q = d.toString().trim();
-    console.log("you choose: Number [" +
-        d.toString().trim() + "]");
-
-    switch (q) {
-        case "1":
-            console.log("Please Enter X,Y Point:")
-            stdin.addListener("data", function (d) {
-                var x = d.toString();
-                PrintOnXY(x, 50);
-                Read();
-            });
-
-            break;
-        case "2":
-
-            console.log("Please Choose Color:")
-            var std = process.openStdin();
-
-            std.addListener("data", function (color) {
-                var z = color.toString();
-                var ansi = require('./ansireg')
-                    , cursor = ansi(process.stdout);
-                switch (z) {     
-                  
-                    case "white":
-                   
-
-                        cursor
-                            .white()                 // Set font color to red 
-                            .bg.grey()             // Set background color to grey // Write 'Hello World!' to stdout 
-                            .bg.reset()            // Reset the bgcolor before writing the trailing \n, 
-                            //      to avoid Terminal glitches 
-                            .write('\n')           // And a final \n to wrap things up 
-                        console.log('This is blood ' + x + ', bold text')
-
-                        cursor.fg.reset()
-                        Read();
-                        break;
-                    case "blue":
-                        cursor
-                            .blue()                 // Set font color to red 
-                            .bg.grey()             // Set background color to grey // Write 'Hello World!' to stdout 
-                            .bg.reset()            // Reset the bgcolor before writing the trailing \n, 
-                            //      to avoid Terminal glitches 
-                            .write('\n')           // And a final \n to wrap things up 
-                        console.log('This is blood ' + x + ', bold text')
-
-                        cursor.fg.reset()
-                        Read();
-                        break;
-                    case "green":
-                        cursor
-                            .green()                 // Set font color to red 
-                            .bg.grey()             // Set background color to grey // Write 'Hello World!' to stdout 
-                            .bg.reset()            // Reset the bgcolor before writing the trailing \n, 
-                            //      to avoid Terminal glitches 
-                            .write('\n')           // And a final \n to wrap things up 
-                        console.log('This is blood ' + x + ', bold text')
-
-                        cursor.fg.reset()
-                        Read();
-                        break;
-                    case "yellow":
-                        cursor
-                            .yellow()                 // Set font color to red 
-                            .bg.grey()             // Set background color to grey // Write 'Hello World!' to stdout 
-                            .bg.reset()            // Reset the bgcolor before writing the trailing \n, 
-                            //      to avoid Terminal glitches 
-                            .write('\n')           // And a final \n to wrap things up 
-                        console.log('This is blood ' + x + ', bold text')
-
-                        cursor.fg.reset()
-                        Read();
-                        break;
-                    case "cyan":
-                        cursor
-                            .cyan()                 // Set font color to red 
-                            .bg.grey()             // Set background color to grey // Write 'Hello World!' to stdout 
-                            .bg.reset()            // Reset the bgcolor before writing the trailing \n, 
-                            //      to avoid Terminal glitches 
-                            .write('\n')           // And a final \n to wrap things up 
-                        console.log('This is blood ' + x + ', bold text')
-
-                        cursor.fg.reset()
-                        Read();
-                        break;
-
-                }
-                //Read();
-            })
-            break;
-        case "3":
-
-            cursor.bg.red().bold().underline().write("Hello I am here")
-            break;
-
-        case "4":
-
-            Box();
-            //Brushcolor();
-            Brush();
-            Circle();
-            stdin.addListener("data", function (d) {
-                var x = d.toString();
-
-                if (x == "box") {
-                    Box();
-                } else if (x == "circle") {
-                    Circle();
-                } else if (x == "brush") {
-                    Brush();
-                } else if (x == "brush-color"){
-                    Brushcolor();
-                }
-
-                Read();
-            });
-
-            break;
-        case "5":
-            ProgressBar();
-            break;
-
-
-    }
-
-
-});
-
-
-function PrintOnXY(x,y) {
+function PrintOnXY(x,y,text) {
     var ansi = require('./ansireg')
     , cursor = ansi(process.stdout)
 
 // You can chain your calls forever: 
     cursor
-    .white()                 // Set font color to red 
-    .bg.grey()             // Set background color to grey // Write 'Hello World!' to stdout 
-    .bg.reset()            // Reset the bgcolor before writing the trailing \n, 
+        .green()                 // Set font color to red 
+        .bg.white()             // Set background color to grey // Write 'Hello World!' to stdout 
+                            // Reset the bgcolor before writing the trailing \n, 
     //      to avoid Terminal glitches 
     .write('\n')           // And a final \n to wrap things up 
 
-cursor.goto(x, y).write('Five down, ten over')
+    cursor.goto(x, y).write('Wellcome : ' + text)
 }
 
 
@@ -532,7 +546,27 @@ function ProgressBar() {
 
 
 
+function PrintTable() {
+    var Table = require('./table')
 
+
+var data = [
+    { id: 123123, desc: 'Something awesome', price: 1000.00 },
+    { id: 245452, desc: 'Very interesting book', price: 11.45 },
+    { id: 232323, desc: 'Yet another product', price: 555.55 }
+]
+
+var t = new Table
+
+data.forEach(function (product) {
+    t.cell('Product Id', product.id)
+    t.cell('Description', product.desc)
+    t.cell('Price, USD', product.price, Table.number(2))
+    t.newRow()
+})
+
+console.log(t.toString())
+}
 
 
 

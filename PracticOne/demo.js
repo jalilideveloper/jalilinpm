@@ -1,10 +1,92 @@
+﻿'use strict';
+
+Read();
+
+function Read() {
+
+    var ansi = require('./ansireg')
+        , cursor = ansi(process.stdout)
+
+    // You can chain your calls forever: 
+    cursor
+        .white()                 // Set font color to red 
+        .bg.grey()             // Set background color to grey // Write 'Hello World!' to stdout 
+        .bg.reset()            // Reset the bgcolor before writing the trailing \n, 
+        //      to avoid Terminal glitches 
+        .write('\n')           // And a final \n to wrap things up 
+    console.log("\n")
+    console.log("Please Choose Number : \n")
+    console.log("1. Enter yourName with screen x,y position. ==> 1,Alex,500,100 \n")
+    console.log("2. Enter yorname with your favorite color.  ==> 2,Alex,Red \n")
+    console.log("3. Enter yourname with your backcolor.      ==> 3,Alex,Red \n")
+    console.log("4. Shape: [Box-Circle-Brush-Brushcolor]     ==> 4,Box .\n")
+    console.log("5. Load progress bar.                       ==> 5,ver Or 5,hor \n")
+    console.log("6. Load data in table view.                 ==> 6 \n")
 
 
-'use strict';
+    var stdin = process.openStdin();
+    stdin.addListener("data", function (d) {
+        var q = d.toString().trim();
+
+
+        var arr = q.split(',')
+        console.log("You entered : " + arr[0] + "\n");
+
+        if (arr[0] == "1") {
+            var x = d.toString();
+            PrintOnXY(arr[2], arr[3], arr[1]);
+            Read();
+        }
+        else if (arr[0] == "2") {
+            SetFontColor(arr[2], arr[1]);
+            Read();
+        }
+        else if (arr[0] == "3") {
+
+            SetBackColor(arr[2],arr[1])
+            Read();
+
+        }
+
+        else if (arr[0] == "4") {
+            if (arr[1] == "Box") {
+                Box();
+            } else if (arr[1] == "Circle") {
+                Circle();
+            } else if (arr[1] == "Brush") {
+                Brush();
+            } else if (arr[1] == "Brushcolor") {
+                Brushcolor();
+            }
+            Read();
+        }
+
+        else if (arr[0] == "5") {
+
+            if (arr[1] == "ver") {
+                ProgressBar();
+            } else {
+                // horizantal progress
+            }
+
+        }
+
+
+        else if (arr[0] == "6") {
+            PrintTable();
+            Read();
+        }
 
 
 
-module.exports = function SetBackColor(cl, text) {
+
+
+    });
+}
+
+
+
+function SetBackColor(cl,text) {
     var ansi = require('./ansireg')
         , cursor = ansi(process.stdout);
 
@@ -30,7 +112,8 @@ module.exports = function SetBackColor(cl, text) {
 
 }
 
-module.exports = function SetFontColor(cl, text) {
+
+function SetFontColor(cl,text) {
     var ansi = require('./ansireg')
         , cursor = ansi(process.stdout);
     var color = cl;
@@ -100,7 +183,7 @@ module.exports = function SetFontColor(cl, text) {
     }
 }
 
-module.exports = function PrintOnXY(x, y, text) {
+function PrintOnXY(x, y, text) {
     var ansi = require('./ansireg')
         , cursor = ansi(process.stdout)
 
@@ -115,7 +198,11 @@ module.exports = function PrintOnXY(x, y, text) {
     cursor.goto(x, y).write('Wellcome : ' + text)
 }
 
-module.exports = function Box() {
+
+
+
+
+function Box() {
 
     // Uses AXEL's node module
     var ctx = require('./Axel');
@@ -143,7 +230,7 @@ module.exports = function Box() {
 }
 
 
-module.exports = function Circle() {
+function Circle() {
 
     // Uses AXEL's node module
     var ctx = require('./Axel');
@@ -177,7 +264,7 @@ module.exports = function Circle() {
 }
 
 
-module.exports = function Brush() {
+function Brush() {
 
     // Uses AXEL's node module
     var ctx = require('./Axel');
@@ -231,7 +318,7 @@ module.exports = function Brush() {
 }
 
 
-module.exports = function Brushcolor() {
+function Brushcolor() {
 
     // Uses AXEL's node module
     var ctx = require('./Axel');
@@ -303,7 +390,7 @@ module.exports = function Brushcolor() {
 
 
 
-module.exports = function ProgressBar() {
+function ProgressBar() {
 
 
     var assert = require('assert')
@@ -395,7 +482,7 @@ module.exports = function ProgressBar() {
 
 
 
-module.exports = function PrintTable() {
+function PrintTable() {
     var Table = require('./table')
 
 
@@ -419,7 +506,7 @@ module.exports = function PrintTable() {
 
 
 
-module.exports = function Line() {
+function Line() {
 
 
     // Uses AXEL's node module
@@ -439,7 +526,7 @@ module.exports = function Line() {
 }
 
 
-module.exports = function Point() {
+function Point() {
 
     // Uses AXEL's node module
     var ctx = require('./Axel');
@@ -461,10 +548,6 @@ module.exports = function Point() {
     ctx.cursor.restore();
 }
 
-
-module.exports = function area(width, height) {
-    return width * height;
-};
 
 
 
@@ -559,11 +642,3 @@ module.exports = function area(width, height) {
 
 //// Clean up after yourself! 
 //cursor.reset()
-
-
-
-
-
-
-
-

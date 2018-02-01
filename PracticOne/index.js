@@ -1,7 +1,7 @@
 ﻿
 
 
-module.exports = function (width, height) {
+module.exports = function area (width, height) {
     return width * height;
 };
 

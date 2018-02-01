@@ -11,7 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>3ed5b940-1a40-4393-8a38-ac0f679a7c18</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>app.js</StartupFile>
+    <StartupFile>demo.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -36,6 +36,9 @@
     </Compile>
     <Compile Include="app.js" />
     <Compile Include="Axel.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="demo.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="index.js" />

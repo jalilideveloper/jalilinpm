@@ -1,9 +1,9 @@
 {
   "name": "jalili",
   "version": "0.0.2",
-  "description": "PracticOne",
+  "description": "C1-EPAD",
   "main": "app.js",
-  "author": "administrator",
+  "author": "Mohammad Jalili",
   "keywords": [
     "jalili",
     "table",

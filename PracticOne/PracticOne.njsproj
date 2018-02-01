@@ -11,7 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>3ed5b940-1a40-4393-8a38-ac0f679a7c18</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Progress.js</StartupFile>
+    <StartupFile>AxelSample\brush-color.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -35,6 +35,17 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="app.js" />
+    <Compile Include="Axel.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AxelSample\box.js" />
+    <Compile Include="AxelSample\brush-color.js" />
+    <Compile Include="AxelSample\brush.js" />
+    <Compile Include="AxelSample\circle.js" />
+    <Compile Include="AxelSample\line.js" />
+    <Compile Include="AxelSample\points.js" />
+    <Compile Include="AxelSample\scrub.js" />
+    <Compile Include="AxelSample\text.js" />
     <Compile Include="index.js" />
     <Compile Include="newlines.js" />
     <Compile Include="Progress.js">
@@ -50,6 +61,7 @@
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AxelSample\" />
     <Folder Include="bin\" />
     <Folder Include="node_modules\" />
     <Folder Include="obj\" />
